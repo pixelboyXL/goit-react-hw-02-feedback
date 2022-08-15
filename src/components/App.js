@@ -12,10 +12,10 @@ export class App extends Component {
         bad: 0
   };
   addFeedback = property => {
-    this.setState ( prevState => ({
+    this.setState(prevState => ({
       [property]: prevState[property] + 1,
     })
-    )
+    );
   };
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -58,8 +58,8 @@ export class App extends Component {
         </Section>
         <GlobalStyle />
       </Box>
-    )
-  }
+    );
+  };
 };
 
 /* <div
