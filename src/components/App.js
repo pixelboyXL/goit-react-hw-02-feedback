@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { GlobalStyle } from './GlobalStyles';
+import { Box } from 'components/Box';
 import { Section } from 'components/Section/Section';
 import { FeedbackOptions } from 'components/Feedback/FeedbackOptions';
 import { Statistics } from 'components/Statistics/Statistics';
@@ -18,22 +19,35 @@ export class App extends Component {
   };
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
-      return good + neutral + bad;
-  }
+    return good + neutral + bad;
+  };
   countPositiveFeedbackPercentage = () => {
     const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
     return total > 0 ? Math.round(100 / total * good) : 0;
-  }
+  };
   render() {
     const keys = Object.keys(this.state);
-    const { good, neutral, bad} = this.state;
+    const { good, neutral, bad } = this.state;
     return (
-      <>
-        <Section title={<h2>Please leave feedback</h2>}>
+      <Box as="section"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        mx="auto"
+        mt="350px"
+        width="250px"
+        p={5}
+        bg="maybeYellow"
+        border="normal"
+        borderRadius="sm"
+        borderColor="almostDarkGreen"
+        boxShadow="shadow"
+      >
+        <Section title="Please leave feedback">
           <FeedbackOptions options={keys} onLeaveFeedback={this.addFeedback} />
         </Section>
-        <Section title={<h2>Statistics</h2>}>
+        <Section title="Statistics">
           <Statistics
             good={good}
             neutral={neutral}
@@ -43,7 +57,7 @@ export class App extends Component {
           />
         </Section>
         <GlobalStyle />
-      </>
+      </Box>
     )
   }
 };
